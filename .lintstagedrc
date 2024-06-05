@@ -1,0 +1,6 @@
+{
+  "*.ts": [
+    "npx nx affected --target=type-check",
+    "npx nx affected --target=lint"
+  ]
+}
