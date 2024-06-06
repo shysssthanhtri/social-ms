@@ -6,7 +6,9 @@ services:
     environment:
       - POSTGRES_USER=${POSTGRES_ROOT_USER}
       - POSTGRES_PASSWORD=${POSTGRES_ROOT_USER}
+      - POSTGRES_MULTIPLE_DATABASES=db1,db2
     ports:
       - 5432:5432
     volumes:
       - ./tmp/postgresql:/var/lib/postgresql/data
+      - ./scripts:/docker-entrypoint-initdb.d
