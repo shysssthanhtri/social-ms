@@ -1,0 +1,12 @@
+version: '3.8'
+services:
+  postgresql:
+    container_name: postgresql
+    image: postgres:alpine
+    environment:
+      - POSTGRES_USER=${POSTGRES_ROOT_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_ROOT_USER}
+    ports:
+      - 5432:5432
+    volumes:
+      - ./tmp/postgresql:/var/lib/postgresql/data
