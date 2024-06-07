@@ -6,7 +6,7 @@ services:
     environment:
       - POSTGRES_USER=${POSTGRES_ROOT_USER}
       - POSTGRES_PASSWORD=${POSTGRES_ROOT_USER}
-      - POSTGRES_MULTIPLE_DATABASES=db1,db2
+      - POSTGRES_MULTIPLE_DATABASES=${POSTGRES_DB_AUTH}
     ports:
       - 5432:5432
     volumes:
