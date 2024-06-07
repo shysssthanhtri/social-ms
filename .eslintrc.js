@@ -46,5 +46,6 @@ module.exports = {
         patterns: ['.*'],
       },
     ],
+    'lines-between-class-members': ['error', 'always'],
   },
 };
