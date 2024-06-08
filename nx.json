@@ -6,6 +6,11 @@
       "dependsOn": ["^build"],
       "inputs": ["production", "^production"]
     },
+    "start:dev": {
+      "cache": false,
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"]
+    },
     "lint": {
       "cache": true,
       "inputs": [

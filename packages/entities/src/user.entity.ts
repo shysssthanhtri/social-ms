@@ -1,13 +1,12 @@
 import { IsEmail, IsNotEmpty, MaxLength, MinLength } from 'class-validator';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity } from 'typeorm';
+
+import { AbstractEntity } from '@/abstract.entity';
 
 @Entity({
   name: 'users',
 })
-export class UserEntity {
-  @PrimaryGeneratedColumn()
-  id: number;
-
+export class UserDomainEntity extends AbstractEntity {
   @IsEmail()
   @Column({
     unique: true,
