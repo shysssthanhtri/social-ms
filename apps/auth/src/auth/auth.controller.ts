@@ -1,11 +1,11 @@
-import { Controller, Post, Request, UseGuards } from '@nestjs/common';
-import { AuthGuard } from '@nestjs/passport';
+import { Body, Controller, Post } from '@nestjs/common';
 
-@Controller()
+import { SignInDto } from '@/auth/dtos/sign-in.dto';
+
+@Controller('auth')
 export class AuthController {
-  @UseGuards(AuthGuard('local'))
-  @Post('auth/login')
-  async login(@Request() request) {
-    return request.user;
+  @Post('signup')
+  async signUp(@Body() dto: SignInDto) {
+    return dto;
   }
 }

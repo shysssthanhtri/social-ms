@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
 
 import { UsersService } from '@/users/users.service';
 
@@ -6,13 +6,11 @@ import { UsersService } from '@/users/users.service';
 export class AuthService {
   constructor(private usersService: UsersService) {}
 
-  async validateUser(username: string, pass: string): Promise<any> {
-    const user = await this.usersService.findOne(username);
-    if (user && user.password === pass) {
-      // eslint-disable-next-line unused-imports/no-unused-vars, @typescript-eslint/no-unused-vars
-      const { password, ...result } = user;
-      return result;
+  async validateUser(email: string, password: string) {
+    const user = await this.usersService.findByEmail(email);
+    if (user.password !== password) {
+      throw new UnauthorizedException();
     }
-    return null;
+    return user;
   }
 }

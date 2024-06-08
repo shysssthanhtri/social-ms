@@ -1,4 +1,8 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+
+import { UserEntity } from '@/users/entities/user.entity';
 
 export type User = {
   userId: number;
@@ -8,20 +12,12 @@ export type User = {
 
 @Injectable()
 export class UsersService {
-  private readonly users: User[] = [
-    {
-      userId: 1,
-      username: 'john',
-      password: 'changeme',
-    },
-    {
-      userId: 2,
-      username: 'maria',
-      password: 'guess',
-    },
-  ];
+  constructor(
+    @InjectRepository(UserEntity)
+    private readonly usersRepo: Repository<UserEntity>,
+  ) {}
 
-  async findOne(username: string): Promise<User | undefined> {
-    return this.users.find((user) => user.username === username);
+  async findByEmail(email: UserEntity['email']): Promise<UserEntity> {
+    return this.usersRepo.findOneByOrFail({ email });
   }
 }
