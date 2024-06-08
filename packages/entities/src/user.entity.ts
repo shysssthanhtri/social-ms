@@ -1,3 +1,4 @@
+import { ApiProperty } from '@nestjs/swagger';
 import { IsEmail, IsNotEmpty, MaxLength, MinLength } from 'class-validator';
 import { Column, Entity } from 'typeorm';
 
@@ -11,6 +12,7 @@ export class UserDomainEntity extends AbstractEntity {
   @Column({
     unique: true,
   })
+  @ApiProperty()
   email: string;
 
   @IsNotEmpty()
@@ -20,9 +22,11 @@ export class UserDomainEntity extends AbstractEntity {
     name: 'display_name',
     length: 30,
   })
+  @ApiProperty()
   displayName: string;
 
   @IsNotEmpty()
   @Column()
+  @ApiProperty()
   password: string;
 }

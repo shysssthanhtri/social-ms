@@ -13,7 +13,6 @@ import { UsersModule } from '@/users/users.module';
       url: 'postgres://root:root@localhost:5432/auth',
       synchronize: true,
       autoLoadEntities: true,
-      logging: true,
     }),
   ],
   controllers: [],

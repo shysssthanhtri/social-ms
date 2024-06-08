@@ -1,4 +1,4 @@
-import { PickType } from '@nestjs/mapped-types';
+import { PickType } from '@nestjs/swagger';
 import { UserDomainEntity } from 'entities';
 
 export class SignUpDto extends PickType(UserDomainEntity, [
