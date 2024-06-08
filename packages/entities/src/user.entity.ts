@@ -1,4 +1,4 @@
-import { IsEmail, IsNotEmpty } from 'class-validator';
+import { IsEmail, IsNotEmpty, MaxLength, MinLength } from 'class-validator';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity({
@@ -15,8 +15,11 @@ export class UserEntity {
   email: string;
 
   @IsNotEmpty()
+  @MinLength(5)
+  @MaxLength(30)
   @Column({
     name: 'display_name',
+    length: 30,
   })
   displayName: string;
 
