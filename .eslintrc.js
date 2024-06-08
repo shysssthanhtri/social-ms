@@ -10,6 +10,8 @@ module.exports = {
     'simple-import-sort',
     'unused-imports',
     'prettier',
+    ,
+    'import',
   ],
   extends: [
     'plugin:@typescript-eslint/recommended',
@@ -47,5 +49,6 @@ module.exports = {
       },
     ],
     'lines-between-class-members': ['error', 'always'],
+    'import/newline-after-import': 'error',
   },
 };
