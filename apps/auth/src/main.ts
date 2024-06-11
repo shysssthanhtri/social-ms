@@ -11,13 +11,14 @@ async function bootstrap() {
   const config = new DocumentBuilder()
     .setTitle('Auth')
     .setDescription('The auth API description')
-    .setBasePath('api')
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('docs', app, document);
 
   app.useGlobalPipes(new ValidationPipe());
 
-  await app.listen(3000);
+  await app.listen(3000, () => {
+    console.log('Listening ...');
+  });
 }
 bootstrap();

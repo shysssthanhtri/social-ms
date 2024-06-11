@@ -10,7 +10,7 @@ import { UsersModule } from '@/users/users.module';
     UsersModule,
     TypeOrmModule.forRoot({
       type: 'postgres',
-      url: 'postgres://root:root@localhost:5432/auth',
+      url: process.env.DATABASE_URL,
       synchronize: true,
       autoLoadEntities: true,
     }),
