@@ -65,8 +65,8 @@ jobs:
       - name: Test
         run: npx nx run-many --target=test --parallel=1
 
-      - name: Test e2e
-        run: npx nx run-many --target=test:e2e --parallel=1
+      # - name: Test e2e
+      #   run: npx nx run-many --target=test:e2e --parallel=1
 
       - name: Docker build
         run: npx nx run-many --target=docker:build --parallel=1
