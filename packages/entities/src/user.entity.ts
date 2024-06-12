@@ -1,4 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { Exclude } from 'class-transformer';
 import { IsEmail, IsNotEmpty, MaxLength, MinLength } from 'class-validator';
 import { Column, Entity } from 'typeorm';
 
@@ -28,5 +29,6 @@ export class UserDomainEntity extends AbstractEntity {
   @IsNotEmpty()
   @Column()
   @ApiProperty()
+  @Exclude({ toPlainOnly: true })
   password: string;
 }

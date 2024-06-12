@@ -12,7 +12,7 @@ docker_build(
     dockerfile='./apps/auth/docker/Dockerfile',
     target='dev',
     live_update=[
-        sync('./apps/auth', '/app/apps/auth')
+        sync('./apps/auth', '/app/apps/auth'),
     ],
     ignore=[
         "./locals/tmp",
@@ -23,4 +23,5 @@ docker_build(
 k8s_yaml('./apps/auth/k8s/depl.yaml')
 k8s_yaml('./apps/auth/k8s/service.yaml')
 
+k8s_resource('auth', port_forwards=3000, labels=['services'])
 dc_resource('postgresql', labels=['database'])

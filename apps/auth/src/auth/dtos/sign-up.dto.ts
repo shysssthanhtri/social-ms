@@ -4,4 +4,5 @@ import { UserDomainEntity } from 'entities';
 export class SignUpDto extends PickType(UserDomainEntity, [
   'email',
   'password',
+  'displayName',
 ]) {}

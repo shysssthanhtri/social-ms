@@ -20,4 +20,11 @@ export class UsersService {
   async findByEmail(email: UserEntity['email']): Promise<UserEntity> {
     return this.usersRepo.findOneByOrFail({ email });
   }
+
+  create = async (
+    user: Pick<UserEntity, 'displayName' | 'email' | 'password'>,
+  ) => {
+    const newUser = this.usersRepo.create(user);
+    return this.usersRepo.save(newUser);
+  };
 }
